@@ -2,8 +2,15 @@ package ua.hillel.stolitnii.glovo.rest;
 
 import java.util.Date;
 import java.util.List;
+import org.springframework.data.annotation.Id;
 
+@Entity
 public class Order {
+    @Id
+    private Long id;
+    private Date date;
+    private double cost;
+    private List<Product> products;
     private Long id;
     private Date date;
     private double cost;

@@ -51,7 +51,7 @@ public class JdbcOrderRepository implements OrderRepository {
             Long id = resultSet.getLong("id");
             Timestamp date = resultSet.getTimestamp("date");
             double cost = resultSet.getDouble("cost");
-            return new Order(id, new java.util.Date(date.getTime()), cost, null); // Врахуйте обробку продуктів
+            return new Order(id, new java.util.Date(date.getTime()), cost, null);
         }
     }
 }

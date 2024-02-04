@@ -1,6 +1,10 @@
 package ua.hillel.stolitnii.glovo.rest;
-
+@Entity
 public class Product {
+    @Id
+    private Long id;
+    private String name;
+    private double cost;
     private Long id;
     private String name;
     private double cost;

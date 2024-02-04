@@ -1,10 +1,8 @@
 package ua.hillel.stolitnii.glovo.rest;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
-@Repository
-public interface OrderRepository {
+public interface OrderRepository extends CrudRepository<Order, Long> {
     Order findById(Long id);
     List<Order> findAll();
     void save(Order order);
