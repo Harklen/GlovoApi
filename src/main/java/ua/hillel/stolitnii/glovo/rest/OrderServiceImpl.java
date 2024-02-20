@@ -3,11 +3,15 @@ package ua.hillel.stolitnii.glovo.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Service
 public class OrderServiceImpl implements OrderService {
+
+    private static final Logger log = LoggerFactory.getLogger(OrderServiceImpl.class);
 
     private final OrderRepository orderRepository;
     private final OrderMapper orderMapper;
@@ -20,32 +24,51 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order findById(Long id) {
-        return orderRepository.findById(id).orElse(null);
+        try {
+            return orderRepository.findById(id).orElse(null);
+        } catch (Exception e) {
+            log.error("Error while finding order by ID: {}", id, e);
+            throw e;
+        }
     }
 
     @Override
     public List<Order> findAll() {
-        return (List<Order>) orderRepository.findAll();
+        try {
+            return (List<Order>) orderRepository.findAll();
+        } catch (Exception e) {
+            log.error("Error while finding all orders", e);
+            throw e;
+        }
     }
 
     @Override
     public void save(Order order) {
-        orderRepository.save(order);
+        try {
+            orderRepository.save(order);
+        } catch (Exception e) {
+            log.error("Error while saving order: {}", order, e);
+            throw e;
+        }
     }
 
     @Override
     public void update(Order order) {
-        orderRepository.save(order);
+        try {
+            orderRepository.save(order);
+        } catch (Exception e) {
+            log.error("Error while updating order: {}", order, e);
+            throw e;
+        }
     }
 
     @Override
     public void delete(Long id) {
-        orderRepository.delete(id);
-    }
-
-    @Override
-    public OrderDto findByIdWithMapstruct(Long id) {
-        Order order = findById(id);
-        return orderMapper.orderToOrderDto(order);
+        try {
+            orderRepository.delete(id);
+        } catch (Exception e) {
+            log.error("Error while deleting order by ID: {}", id, e);
+            throw e;
+        }
     }
 }
