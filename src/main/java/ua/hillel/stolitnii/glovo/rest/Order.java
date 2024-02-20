@@ -1,16 +1,14 @@
 package ua.hillel.stolitnii.glovo.rest;
 
+import org.springframework.data.annotation.Id;
+
+import javax.persistence.Entity;
 import java.util.Date;
 import java.util.List;
-import org.springframework.data.annotation.Id;
 
 @Entity
 public class Order {
     @Id
-    private Long id;
-    private Date date;
-    private double cost;
-    private List<Product> products;
     private Long id;
     private Date date;
     private double cost;
@@ -25,6 +23,8 @@ public class Order {
         this.cost = cost;
         this.products = products;
     }
+
+    // Геттери та сеттери
 
     public Long getId() {
         return id;
@@ -58,4 +58,3 @@ public class Order {
         this.products = products;
     }
 }
-
